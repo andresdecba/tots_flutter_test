@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tots_flutter_test/auth/presentation/screens/login_screen.dart';
 import 'package:tots_flutter_test/clients/domain/entities/client.dart';
+import 'package:tots_flutter_test/clients/presentation/screens/about_page.dart';
 import 'package:tots_flutter_test/clients/presentation/screens/find_client_screen.dart';
 import 'package:tots_flutter_test/clients/presentation/screens/get_client_screen.dart';
 import 'package:tots_flutter_test/clients/presentation/screens/home_screen.dart';
@@ -18,6 +19,7 @@ class AppRoutes {
   static const getClientScreen = 'getClientScreen';
   static const homeScreen = 'homeScreen';
   static const createUpdateScreen = 'createUpdateScreen';
+  static const aboutScreen = 'aboutScreen';
 }
 
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -73,6 +75,12 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           // create new client
           return const CreateEditClientScreen();
         },
+      ),
+
+      GoRoute(
+        path: '/${AppRoutes.aboutScreen}',
+        name: AppRoutes.aboutScreen,
+        builder: (context, state) => const AboutPage(),
       ),
     ],
   );

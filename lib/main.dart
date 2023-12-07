@@ -1,3 +1,17 @@
+/*
+
+Fecha: 07-12-2023
+Descripción: testskil en Flutter para "Tots"
+Desarrollador: Andrés Pugliese
+Tiempo de desarrollo: 20hs aproximadamente (3 días)
+E-mail: andresdecba@gmail.com
+Mi Linked in: https://www.linkedin.com/in/andres-pugliese
+Mi github: https://github.com/andresdecba
+Mi playstore: https://play.google.com/store/apps/details?id=site.thisweek
+
+
+*/
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

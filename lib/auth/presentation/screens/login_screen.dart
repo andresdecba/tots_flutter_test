@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _tryLogin() {
     if (formStateKey.currentState!.validate()) {
       if (emailCtrlr.text == _loginEmail && passwordCtrlr.text == _loginPassWord) {
-        context.pushNamed(AppRoutes.homeScreen);
+        context.goNamed(AppRoutes.homeScreen);
       } else {
         loginErrorDialog(context);
       }

@@ -26,6 +26,13 @@ class HomeScreen extends ConsumerWidget {
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            onPressed: () => context.pushNamed(AppRoutes.aboutScreen),
+            icon: const Icon(Icons.info_outline),
+            padding: const EdgeInsets.all(8),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
