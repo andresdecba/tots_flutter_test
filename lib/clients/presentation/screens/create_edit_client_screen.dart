@@ -257,19 +257,20 @@ class _CreateUpdateClientScreenState extends ConsumerState<CreateEditClientScree
   Future _createClient(BuildContext context) async {
     if (formStateKey.currentState!.validate()) {
       await Future.delayed(const Duration(seconds: 1));
-      // ignore: use_build_context_synchronously
-      ref.read(createEditProvider.notifier).createNew(
-            context,
-            Client(
-              id: widget.client?.id,
-              firstname: firstNameCtrlr.text,
-              lastname: lastNameCtrlr.text,
-              email: emailCtrlr.text,
-              photo: "",
-              address: addressCtrlr.text,
-              caption: captionCtrlr.text,
-            ),
-          );
+
+      ref.read(
+        createEdit(
+          Client(
+            id: widget.client?.id,
+            firstname: firstNameCtrlr.text,
+            lastname: lastNameCtrlr.text,
+            email: emailCtrlr.text,
+            photo: "",
+            address: addressCtrlr.text,
+            caption: captionCtrlr.text,
+          ),
+        ),
+      );
     }
   }
 

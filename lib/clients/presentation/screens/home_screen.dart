@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tots_flutter_test/clients/presentation/providers/clients_provider.dart';
+import 'package:tots_flutter_test/clients/presentation/providers/page_number_provider.dart';
 import 'package:tots_flutter_test/core/styles/base_screen.dart';
 import 'package:tots_flutter_test/clients/presentation/widgets/client_item.dart';
 import 'package:tots_flutter_test/clients/presentation/widgets/find_bar.dart';
@@ -15,8 +16,9 @@ class HomeScreen extends ConsumerWidget {
     ///
     final textStyles = Theme.of(context).textTheme;
     double height = MediaQuery.of(context).size.height * 0.35;
+    //
     final clientsProv = ref.watch(getClientsProvider);
-    final page = ref.read(pageNumberProvider.notifier);
+    final pageNotifier = ref.watch(pageNumberProvider.notifier);
 
     return BaseScreen(
       appBar: AppBar(
@@ -145,7 +147,7 @@ class HomeScreen extends ConsumerWidget {
                                     child: SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton(
-                                        onPressed: page.state == 1 ? null : () => page.update((state) => state - 1),
+                                        onPressed: (ref.read(pageNumberProvider) == 1) ? null : () => pageNotifier.decrementPage(),
                                         child: Text(
                                           '<<  PREVIOUS PAGE',
                                           style: textStyles.bodySmall!.copyWith(color: Colors.white),
@@ -160,9 +162,7 @@ class HomeScreen extends ConsumerWidget {
                                     child: SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton(
-                                        onPressed: () {
-                                          ref.read(pageNumberProvider.notifier).update((state) => state + 1);
-                                        },
+                                        onPressed: (data.currentPage == data.lastPage) ? null : () => pageNotifier.incrementPage(),
                                         child: Text(
                                           'NEXT PAGE  >>',
                                           style: textStyles.bodySmall!.copyWith(color: Colors.white),
